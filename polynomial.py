@@ -1,34 +1,10 @@
 import time, random
 def evaluate_n2(A, x):
-# code for O(n^2)-time function
-	temp=0
-	answer=0
-	for i in range(len(A)):
-		temp+=A[i]
-		for j in range(i):
-			temp*=x
-		answer+=temp
-		temp=0	
-	return answer
+	
+
 def evaluate_n(A, x):
-# code for O(n)-time function
-	B=[]
-	sqx=x**len(A)
-	for i in A:
-		B.append(i*sqx)
-	for i in range(len(A)):
-		temp=0
-		
-		
-	# eachResult=[]
-	# answer=0
-	# k=0
-	# for i in A:
-	# 	eachResult.append(i*(x**k))
-	# 	k+=1
-	# for i in eachResult:
-	# 	answer+=i
-	# return answer
+
+
 random.seed()# random 함수 초기화
 n=int(input())
 A=[]
@@ -48,6 +24,6 @@ evaluate_n2(A,x)
 e=time.process_time()
 print("수행시간 =",e-s)
 s=time.process_time()
-evaluate_n(A, x)
+evaluate_n(A,x)
 e=time.process_time()
 print("수행시간 =",e-s)
