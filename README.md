@@ -612,4 +612,16 @@
     # {'A': 1, 'B': 2, 'C': 3}
     ```
     
+   </br>
+- ## **알파벳 리스트 만들기**
     
+    아래와 같이 string 모듈에서 ascii_lowercase를 import 한다.
+    
+    ```python
+    from string import ascii_lowercase
+    alpha_list = list(ascii_lowercase)
+     
+    # ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    ```
+    
+    대문자 리스트가 필요하다면, ascii_uppercase를 사용한다.
