@@ -1,7 +1,7 @@
 # Algorithm
 
 
-- ## 출력 형식
+- # 출력 형식
     
     **1. 변수 포맷(`%d`, `%s`, ...)과 `%`를 사용**
     
@@ -111,7 +111,9 @@
     ```
         </br>
 
-- ## 별그리기
+
+
+- # 별그리기
     
     ```python
     ***
@@ -176,7 +178,9 @@
     ```
       </br>
   
-- ## 기본 정렬 함수
+  
+  
+- # 기본 정렬 함수
     
     **1. 오름차순 정렬**
     
@@ -221,7 +225,10 @@
     ```
         </br>
 
-- ## 별 출력
+
+
+
+- # 별 출력
     
     ```python
     * * * * *    행
@@ -244,7 +251,9 @@
     ```
         </br>
 
-- ## 아스키 코드 (ASCII)
+
+
+- # 아스키 코드 (ASCII)
     
     python에서 특정 문자의 아스키 코드 값은 `ord()`라는 함수를 이용해 알 수 있습니다. 실제 문자 'A'의 아스키 코드 값은 65이기 때문에, python에서 ord('A') 코드를 실행하게 되면 65라는 값을 받게 됩니다.
     
@@ -273,7 +282,9 @@
     따라서 알파벳 x 다음 알파벳을 구하는 것은 `chr(ord(x) + 1)` 로 표현이 가능합니다.
         </br>
 
-- ## List 거꾸로 탐색
+
+
+- # List 거꾸로 탐색
     
     ### **Slicing**
     
@@ -374,7 +385,9 @@
     ```
         </br>
 
-- ## 2차원 리스트 입력
+
+
+- # 2차원 리스트 입력
     
     ```python
     n = 4
@@ -385,7 +398,9 @@
     ```
         </br>
 
-- ## **리스트에 map 사용하기**
+
+
+- # **리스트에 map 사용하기**
     
     map은 리스트의 요소를 지정된 함수로 처리해주는 함수입니다(map은 원본 리스트를 변경하지 않고 새 리스트를 생성합니다).
     
@@ -417,7 +432,9 @@
     a = list(map(int, a)) 한 줄로 변환이 끝났습니다. map에 int와 리스트를 넣으면 리스트의 모든 요소를 int를 사용해서 변환합니다. 그다음에 list를 사용해서 map의 결과를 다시 리스트로 만들어줍니다.
         </br>
 
-- ## 문자열이 숫자인지 알파벳인지 판별하기
+
+
+- # 문자열이 숫자인지 알파벳인지 판별하기
     
     ### string.isalpha()  → 알파벳인지 판별
     
@@ -540,7 +557,9 @@
     ```
     
     </br>
-- ## **list를 Dict로 변환하기(dict.fromkeys()..등)**
+    
+    
+- # **list를 Dict로 변환하기(dict.fromkeys()..등)**
 1. **Dictionary Comprehension**
     
     ```python
@@ -613,7 +632,10 @@
     ```
     
    </br>
-- ## **알파벳 리스트 만들기**
+   
+   
+   
+- # **알파벳 리스트 만들기**
     
     아래와 같이 string 모듈에서 ascii_lowercase를 import 한다.
     
@@ -625,3 +647,266 @@
     ```
     
     대문자 리스트가 필요하다면, ascii_uppercase를 사용한다.
+    
+    
+    
+- # **deque 사용하기**
+    
+    ```python
+    from collections import deque
+    
+    ```
+    
+    ### deque
+    
+    Stack이나 queue처럼 한 방향에서 삽입과 삭제가 일어나는게 아니라 양방향에서 삽입과 삭제가 일어나는 자료구조이다.
+    
+    파이썬에서 list를 사용하는 것과 유사하지만 deque를 사용하는 이유는 시간복잡도 때문이다.
+    
+    리스트에서 0번 인덱스를 삭제한다고 생각해보자. 이때 리스트 내부에서는 0번 인덱스를 제거하고 끝이 아니라 뒤에있는 원소들을 앞으로 하나씩 당겨주는 연산을 더 수행하게된다. 따라서 list의 삭제연산은 O(n)이 걸리는데 반면 deque의 삭제연산은 O(1)이다. 따라서 push, pop이 빈번한 알고리즘의 경우 list보다 deque를 사용하는 것이 효율적이다.
+    
+    **1. collections.deque.append(x)**
+    
+    : deque의 맨뒤(오른쪽)에 삽입
+    
+    ```python
+    from collections import deque
+    dq = deque([1,2,3,4])
+    dq.append('a')
+    print(dq)
+    
+    #output#deque([1, 2, 3, 4, 'a'])
+    ```
+    
+    **2. collections.deque.appendleft(x)**
+    
+    : deque의 왼쪽에 삽입
+    
+    ```python
+    from collections import deque
+    dq = deque([1,2,3,4])
+    dq.appendleft('a')
+    print(dq)
+    
+    #output#deque(['a', 1, 2, 3, 4])
+    ```
+    
+    **3. collections.deque.clear()**
+    
+    : deque안의 모든 요소를 제거
+    
+    ```python
+    from collections import deque
+    dq = deque([1,2,3,4])
+    dq.clear()
+    print(dq)
+    
+    #output#deque([])
+    ```
+    
+    **4. collections.deque.insert(i,x)**
+    
+    : i번째 인덱스에 x를 삽입
+    
+    ```python
+    from collections import deque
+    dq = deque([1,2,3,4])
+    dq.insert(3, 'a')
+    print(dq)
+    
+    #output#deque([1, 2, 3, 'a', 4])
+    ```
+    
+    **5. collections.deque.pop()**
+    
+    : 맨 오른값을 제거하고 제거한 값을 리턴한다.
+    
+    ```python
+    from collections import deque
+    dq = deque([1,2,3,4])
+    pop_x = dq.pop()
+    print(dq)
+    print(pop_x)
+    
+    #output#deque([1, 2, 3])#4
+    ```
+    
+    **6. collections.deque.popleft()**
+    
+    : 맨 왼값을 제거하고 제거한 값을 리턴한다.
+    
+    ```python
+    from collections import deque
+    dq = deque([1,2,3,4])
+    pop_x = dq.popleft()
+    print(dq)
+    print(pop_x)
+    
+    #output#deque([2, 3, 4])#1
+    ```
+    
+
+
+- # **lambda x 사용법**
+    
+    1 ) 의미 익명함수를 지칭하는 용어 즉, 기존의 함수(명 등)을 선언하고
+    
+    사용하던 방식과는 달리 바로 정의하여 사용할 수 있는 함수.
+    
+    2 ) 형식 : lambda 인자 : 표현식 예시) **sum = lambda x: x+1**
+    
+    3 ) 인자 넣기 : 람다 표현식을 괄호로 묶은 뒤에 다시 괄호를 붙이고 인수를 넣어 호출
+    
+    ```python
+    (lambda x: x + 10)(1)
+    > 11
+    ```
+    
+    4 ) 인자 두 개 쓰기 : **`lambda x,y: x+y`**
+    
+    5 ) if 사용하기
+    
+    **`check_pass = lambda x: 'pass' if x>=70 else 'fail'`**
+    
+    ### ***2. 리스트를 정렬 key 사용(sort, sorted)***
+    
+    ```python
+    a = [(1, 2), (5, 1), (0, 1), (5, 2), (3, 0)]
+    ```
+    
+    ▷ key 인자를 정하지 않은 기본적인 sort에선, 튜플 순서대로 우선순위 기본 할당
+    
+    ```python
+    # 앞의 인자로 정렬됨
+    b = sorted(a)
+    b = [(0, 1), (1, 2), (3, 0), (5, 1), (5, 2)]
+    ```
+    
+    ▷ key 인자에 함수를 넘겨주면 우선순위가 정해짐.
+    
+    ```python
+    c = sorted(a, key = lambda x : x[0])
+    
+    c = [(0, 1), (1, 2), (3, 0), (5, 1), (5, 2)]
+    
+    d = sorted(a, key = lambda x : x[1])
+    
+    d = [(3, 0), (5, 1), (0, 1), (1, 2), (5, 2)]
+    ```
+    
+    ▷ 비교할 아이템이 요소가 복수 개일 경우, 튜플로 우선순위를 정해줄 수 있다.
+    
+    ▷ -를 붙이면, 현재와 반대차순으로 정렬된다.
+    
+    ```python
+    e = sorted(a, key = lambda x : (x[0], -x[1]))
+    => [(0, 1), (1, 2), (3, 0), (5, 2), (5, 1)]
+    
+    f = sorted(a, key = lambda x : -x[0])
+    => [(5, 1), (5, 2), (3, 0), (1, 2), (0, 1)])
+    ```
+    
+    ▷ 뒤에 문자 순 정렬
+    
+    ```python
+    s = ['2 A', '1 B', '4 C', '1 A']
+    s.sorted(s, key=lambda x: (x.split()[1], x.split()[0]))
+    => ['1 A', '2 A', '1 B', '4 C']
+    ```
+    
+    ```python
+    a_list = ['a', 'b', 'd', 'd', 'b','s']
+    a_counter = Counter(a_list).most_common()
+    => [('b', 2), ('d', 2), ('a', 1), ('s', 1)]
+    
+    # 문자 역순(아스키 값 이용)sorted(a_counter,  key=lambda x: (-x[1], -ord(x[0])))
+    => [('d', 2), ('b', 2), ('s', 1), ('a', 1)]
+    ```
+    
+    ### ***3. map 람다 표현식***
+    
+    ▷ list(map(lambda x: x , list ) 표현식
+    
+    ```python
+    list(map(lambda x: x+10, [1,2,3]))
+    
+    => [11, 12, 13]
+    ```
+    
+    ### ***4. filter()***
+    
+    조건식의 boolean 값이 True 참인 요소만 반환한다.
+    
+    ```python
+    a = [8, 4, 2, 5, 2, 7, 9, 11, 26, 13]
+    
+    result = list(filter(lambda x : x > 7 and x < 15, a))
+    
+    => [8, 9, 11, 13]
+    ```
+    
+
+
+- # **import itertools 사용법 (순열, 조합)**
+    
+    ### combinations(iterable, r) : iterable에서 원소 개수가 r개인 조합 뽑기
+    
+    ```python
+    from itertools import combinations
+    
+    l = [1,2,3]
+    
+    for i in combinations(l,2):
+    	print(i)
+    
+    '''
+    출력 결과:
+    (1, 2)
+    (1, 3)
+    (2, 3)
+    '''
+    ```
+    
+    [파이썬 공식문서](https://docs.python.org/ko/3.8/library/itertools.html)에 따르면 입력 iterable의 순서에 따라 사전식 순서로 방출됩니다. 따라서, 입력 iterable이 정렬되어있으면, 조합 튜플이 정렬된 순서로 생성됩니다.
+    
+    ### combinations_with_replacement(iterable,r) : iterable에서 원소 개수가 r개인 중복 조합 뽑기
+    
+    ```python
+    from itertools import combinations_with_replacement
+    
+    l = ['A', 'B', 'C']
+    
+    for i in combinations_with_replacement(l,2):
+    	print(i)
+    
+    '''
+    출력결과:
+    ('A', 'A')
+    ('A', 'B')
+    ('A', 'C')
+    ('B', 'B')
+    ('B', 'C')
+    ('C', 'C')
+    '''
+    ```
+    
+    ### permutations(iterable,r=None) : iterable에서 원소 개수가 r개인 순열 뽑기
+    
+    ```python
+    from itertools import permutations
+    
+    l = ['A', 'B', 'C']
+    
+    for i in permutations(l): #r을 지정하지 않거나 r=None으로 하면 최대 길이의 순열이 리턴된다!
+    	print(i)
+    
+    '''
+    출력결과:
+    ('A', 'B', 'C')
+    ('A', 'C', 'B')
+    ('B', 'A', 'C')
+    ('B', 'C', 'A')
+    ('C', 'A', 'B')
+    ('C', 'B', 'A')
+    '''
+    ```
