@@ -1,33 +1,27 @@
-from sys import stdin
-input = stdin.readline
+import sys
+arr=list(sys.stdin.readline().rstrip())
 
-def dfs(depth, string):
-    global N, cnt
+point = [0 for _ in range(26)]
+char=set()
+for i in arr:
+    point[ord(i) - 97] += 1
+    char.add(i)
+        
+answer=0
 
-    if depth == N:
-        cnt += 1
+def solution (l,s):
+    global answer
+    if l==0:
+        answer+=1
         return
-    for char in charSet:
-        idx = ord(char) - 97
-        if charCnt[idx] == 0:
-            continue
-        if string and string[-1] == char:
-            continue
-        charCnt[idx] -= 1
-        dfs(depth + 1, string + char)
-        charCnt[idx] += 1
+    for i in char:
+        if s!=i and point[ord(i) - 97] > 0 :
+            point[ord(i) - 97] -= 1
+            solution(l-1, i)
+            point[ord(i) - 97] += 1
+
+solution(len(arr), '')
+print(answer)
+        
 
 
-String = input().strip()
-charCnt = [0] * 26
-N = len(String)
-cnt = 0
-charSet = set()
-
-for char in String:
-    idx = ord(char) - 97
-    charCnt[idx] = charCnt[idx] + 1
-    charSet.add(char)
-
-dfs(0, '')
-print(cnt)
