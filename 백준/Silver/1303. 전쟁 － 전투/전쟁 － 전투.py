@@ -1,40 +1,39 @@
 import sys
 from collections import deque
-input = sys.stdin.readline
- 
-def bfs(x, y, color):
-    cnt = 0
-    queue = deque()
-    queue.append((x, y))
-    visited[x][y] = True
- 
-    while queue:
-        x, y = queue.popleft()
- 
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
- 
-            if 0 <= nx < m and 0 <= ny < n:
-                if graph[nx][ny] == color and not visited[nx][ny]:    # each color check
-                    visited[nx][ny] = True
-                    queue.append((nx, ny))
-                    cnt += 1    # each color count
- 
-    return cnt + 1
- 
-dx = [1, 0, -1, 0]
-dy = [0, 1, 0, -1]
-n, m = map(int, input().split())
-graph = [list(input()) for _ in range(m)]
-visited = [[False] * n for i in range(m)]
- 
-white, blue = 0, 0
+
+n,m=map(int,sys.stdin.readline().split())
+arr=[]
 for i in range(m):
-    for j in range(n):
-        if graph[i][j] == 'W' and not visited[i][j]:
-            white += bfs(i, j, 'W') ** 2    # count accumulate
-        elif graph[i][j] == 'B' and not visited[i][j] :
-            blue += bfs(i, j, 'B') ** 2    # count accumulate
- 
-print(white, blue)
+	arr.append(list(map(str,sys.stdin.readline().rstrip())))
+
+dx=[0,0,1,-1]
+dy=[1,-1,0,0]
+visited=[[0 for i in range(n)]for j in range(m)]
+def bfs(x,y,s):
+	q=deque()
+	count=0
+	q.append((x,y))
+	visited[y][x]=1
+	while q:
+		x,y=q.popleft()
+		for i in range(4):
+			vx=x+dx[i]
+			vy=y+dy[i]
+			if 0<=vx<n and 0<=vy<m and visited[vy][vx]==0 and arr[vy][vx]==s:
+				count+=1
+				visited[vy][vx]=1
+				q.append((vx,vy))
+	return count+1
+				
+Banswer=0
+Wanswer=0
+
+for i in range(m):
+	for j in range(n):
+		if arr[i][j]=='W' and visited[i][j]==0:
+			Wanswer+=bfs(j,i,'W')**2
+		elif arr[i][j]=='B' and visited[i][j]==0:
+			Banswer+=bfs(j,i,'B')**2
+
+
+print(Wanswer,Banswer)
