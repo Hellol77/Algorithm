@@ -6,7 +6,7 @@ function solution(maps) {
     let dys=[1,-1,0,0]
     q.push([0,0,1])
     while (q.length){
-        const [x,y,move]=q.shift()
+        let [x,y,move]=q.shift()
         if (x==goal.x && y==goal.y){
             return move
         }
