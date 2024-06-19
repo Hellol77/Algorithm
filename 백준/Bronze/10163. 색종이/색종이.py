@@ -8,7 +8,7 @@ for i in range(1,n+1):
     row,column,w,h =map(int,sys.stdin.readline().split())
     for r in range(w):
         for c in range(h):
-            arr[r][c]=i
+            arr[row+r][column+c]=i
 
 answer = [0]*(n+1)
 for i in arr:
