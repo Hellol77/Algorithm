@@ -1,20 +1,21 @@
 function solution(people, limit) {
     people.sort((a,b)=>b-a)
+    console.log(people)
     let answer=0
-    let left=0
-    let right=people.length-1
-    while(left<right){
-        if (people[left]+people[right]<=limit){
-            left+=1
-            right-=1
+    let box = 100
+    while(people.length !==0){
+            if (box>=people[people.length-1]){
+                box -=people[people.length-1]
+                people.pop()
+                if (people.length==0){
+                    answer+=1
+                    break
+                }
+            }
+            else if (box<people[people.length-1]){
+                answer+=1
+                box=100
+            }
         }
-        else{
-            left+=1
-        }
-        answer+=1
-    }
-    if (left==right){
-        answer+=1
-    }
     return answer
 }
