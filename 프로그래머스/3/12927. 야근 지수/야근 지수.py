@@ -1,21 +1,22 @@
-import heapq
-
 def solution(n, works):
-    if n>=sum(works):
-        return 0
-    
-    works = [-i for i in works]
-    
-    heapq.heapify(works)
-    
-    for i in range(n):
+    while n:
+        max=0
+        maxIndex=-1
+        for index,i in enumerate(works):
+            if max<i:
+                max=i
+                maxIndex=index
+        n-=1
+        if works[maxIndex]==0:
+            continue
+        works[maxIndex]-=1
+    answer=0
+    print(works)
+    for i in works:
+        if i==0:
+            continue
+        answer+=i*i
+    return answer
         
-        k=heapq.heappop(works)
-        k+=1
-        heapq.heappush(works,k)
-    
-    answerArr = [i*i for i in works]
-    
-    return sum(answerArr)
                 
     
