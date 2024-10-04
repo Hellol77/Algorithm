@@ -6,6 +6,7 @@ def solution(priorities, location):
     for index,i in enumerate(priorities):
         temp.append([i,index])
     d = deque(temp)
+    index=location
     result = []
     while d:
         if d[0][0]==m:
